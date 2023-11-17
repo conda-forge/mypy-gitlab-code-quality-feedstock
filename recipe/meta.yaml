@@ -1,4 +1,4 @@
-{% set version = "1.0.0" %}
+{% set version = "1.1.0" %}
 
 package:
   name: mypy-gitlab-code-quality
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/m/mypy-gitlab-code-quality/mypy-gitlab-code-quality-{{ version }}.tar.gz
-  sha256: 64b9a5ad340740b694ee3b04ee9691c58244413bafa485fbe7d9632f5b3dd654
+  sha256: be06b0def23b11f9ba10dda368cdb15f6320b9beb59b02d72642185630ee80e1
 
 build:
   entry_points:
