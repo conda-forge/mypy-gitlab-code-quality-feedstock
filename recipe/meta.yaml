@@ -5,7 +5,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/m/mypy-gitlab-code-quality/mypy-gitlab-code-quality-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/m/mypy-gitlab-code-quality/mypy-gitlab-code-quality-{{ version }}.tar.gz
   sha256: be06b0def23b11f9ba10dda368cdb15f6320b9beb59b02d72642185630ee80e1
 
 build:
@@ -13,14 +13,14 @@ build:
     - mypy-gitlab-code-quality = mypy_gitlab_code_quality:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.8
+    - python {{ python_min }}
   run:
-    - python >=3.8
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -30,6 +30,7 @@ test:
     - which mypy-gitlab-code-quality || where mypy-gitlab-code-quality
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/soul-catcher/mypy-gitlab-code-quality
