@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
+schema_version: 1
+
+context:
+  version: 1.2.0
+
+package:
+  name: mypy-gitlab-code-quality
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/m/mypy-gitlab-code-quality/mypy_gitlab_code_quality-${{ version }}.tar.gz
+  sha256: 21589b9ed10366994b7bb17c4a718584d395b17ebe9a05e3c41609746ce2b2a0
+
+build:
+  number: 0
+  noarch: python
+  script:
+    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
+  python:
+    entry_points:
+      - mypy-gitlab-code-quality = mypy_gitlab_code_quality:main
+
+requirements:
+  host:
+    - pip
+    - python ${{ python_min }}.*
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+
+tests:
+  - python:
+      pip_check: true
+      python_version: ${{ python_min }}.*
+      imports: mypy_gitlab_code_quality
+  - requirements:
+      run:
+        - python ${{ python_min }}.*
+    script:
+      - which mypy-gitlab-code-quality || where mypy-gitlab-code-quality
+
+about:
+  summary: Simple script to generate gitlab code quality report from output of mypy.
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/soul-catcher/mypy-gitlab-code-quality
+
+extra:
+  recipe-maintainers:
+    - bollwyvl
