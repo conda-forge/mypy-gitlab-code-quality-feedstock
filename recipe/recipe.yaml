@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: 1.2.0
+  version: "1.3.0"
 
 package:
   name: mypy-gitlab-code-quality
@@ -10,9 +10,9 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/m/mypy-gitlab-code-quality/mypy_gitlab_code_quality-${{ version }}.tar.gz
-    sha256: 21589b9ed10366994b7bb17c4a718584d395b17ebe9a05e3c41609746ce2b2a0
+    sha256: 86e32677dbc92d7beeb85d1ea7e47f8da7a0a903959eb6a0ca3f60bf0325ca60
   - url: https://raw.githubusercontent.com/soul-catcher/mypy-gitlab-code-quality/refs/tags/v${{ version }}/tests.py
-    sha256: 1daa9e9ca2fc85a2c4bc1d1775216a25c466457fc5efffa6b49e55fd68d86250
+    sha256: 542f2f7abffe8cca5f9087d07d51ce309478c15d456ab06c2ed8d31fb780ed86
 
 build:
   number: 0
